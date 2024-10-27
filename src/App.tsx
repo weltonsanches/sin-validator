@@ -3,11 +3,19 @@ import Result from "./components/Result";
 import Form from "./components/Form";
 import { Status } from "./models/status-enum";
 
+const sinNumberValidation = (sinNumber: string) => {
+  if (sinNumber === '123') return true;
+  return false;
+};
+
 function App() {
   const [status, setStatus] = useState<Status>(Status.Form);
+  const [isSinNumberValid, setIsSinNumberValid] = useState<boolean>(false);
 
   const handleValidation = (sinNumber: string) => {
-    console.log("Sin Number is", sinNumber);
+    const sinNumberValidationResult = sinNumberValidation(sinNumber);
+
+    setIsSinNumberValid(sinNumberValidationResult);
     setStatus(Status.Result);
   };
 
@@ -21,7 +29,7 @@ function App() {
         {status === Status.Form ? (
           <Form handleValidation={handleValidation} />
         ) : (
-          <Result setStatus={setStatus} />
+          <Result setStatus={setStatus} isSinNumberValid={isSinNumberValid} />
         )}
       </div>
     </div>

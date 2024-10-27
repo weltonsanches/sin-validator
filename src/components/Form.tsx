@@ -16,7 +16,7 @@ const Form: React.FC<FormProps> = ({ handleValidation }) => {
         onChange={(e) => setSinNumber(e.target.value)}
         className="input input-bordered input-primary w-full max-w-xs m-5"
       />
-      <button className="btn btn-primary" onClick={() => handleValidation(sinNumber)}>
+      <button className="btn btn-primary btn-outline" onClick={() => handleValidation(sinNumber)}>
         Validate
       </button>
     </div>
