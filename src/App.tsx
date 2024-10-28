@@ -2,18 +2,14 @@ import { useState } from "react";
 import Result from "./components/Result";
 import Form from "./components/Form";
 import { Status } from "./models/status-enum";
-
-const sinNumberValidation = (sinNumber: string) => {
-  if (sinNumber === '123') return true;
-  return false;
-};
+import validateSinNumber from "./services/validate-sin-number";
 
 function App() {
   const [status, setStatus] = useState<Status>(Status.Form);
   const [isSinNumberValid, setIsSinNumberValid] = useState<boolean>(false);
 
   const handleValidation = (sinNumber: string) => {
-    const sinNumberValidationResult = sinNumberValidation(sinNumber);
+    const sinNumberValidationResult = validateSinNumber(sinNumber);
 
     setIsSinNumberValid(sinNumberValidationResult);
     setStatus(Status.Result);
